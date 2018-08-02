@@ -45,24 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditiveCollection.cs" />
+    <Compile Include="IAdditiveCollection.cs" />
+    <Compile Include="IAdditiveFactory.cs" />
     <Compile Include="AdditiveHashSet.cs" />
-    <Compile Include="DoubleCheese.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ham.cs" />
     <Compile Include="Meal.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Additive.cs" />
+    <Compile Include="MealType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mushroom.cs" />
-    <Compile Include="SaladBuffet.cs" />
-    <Compile Include="Salami.cs" />
-    <Compile Include="Sauce.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

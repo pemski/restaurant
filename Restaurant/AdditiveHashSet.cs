@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class AdditiveHashSet : AdditiveCollection
+    public class AdditiveHashSet : IAdditiveCollection
     {
-        public IEnumerable<Product> Additives { get; set; }
+        public IEnumerable<Additive> Additives { get; }
 
 
         public AdditiveHashSet()
@@ -17,21 +17,21 @@ namespace Restaurant
         }
 
 
-        public IEnumerable<Product> CreateCollection()
+        public IEnumerable<Additive> CreateCollection()
         {
-            return new HashSet<Product>();
+            return new HashSet<Additive>();
         }
 
 
-        public void Add(Product additive)
+        public void Add(Additive additive)
         {
-            ((HashSet<Product>)Additives).Add(additive);
+            ((HashSet<Additive>)Additives).Add(additive);
         }
 
 
-        public void Remove(Product additive)
+        public void Remove(Additive additive)
         {
-            ((HashSet<Product>)Additives).Remove(additive);
+            ((HashSet<Additive>)Additives).Remove(additive);
         }
 
 
