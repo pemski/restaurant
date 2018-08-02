@@ -18,6 +18,15 @@ namespace Restaurant
 
         public Additive(string name, decimal cost, string currency)
         {
+            if (String.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException("name", "Additive: name cannot be empty or null.");
+
+            if (cost < 0)
+                throw new ArgumentOutOfRangeException("cost", "Additive: cost cannot be lesser than 0.");
+
+            if (String.IsNullOrWhiteSpace(currency))
+                throw new ArgumentNullException("currency", "Additive: currency cannot be empty or null.");
+
             Name = name;
             Cost = cost;
             Currency = currency;
