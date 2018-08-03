@@ -58,6 +58,7 @@
     <Compile Include="Meal.cs" />
     <Compile Include="Additive.cs" />
     <Compile Include="MealType.cs" />
+    <Compile Include="MeatAdditiveFactory.cs" />
     <Compile Include="NullAdditiveFactory.cs" />
     <Compile Include="PizzaAdditiveFactory.cs" />
     <Compile Include="Program.cs" />
