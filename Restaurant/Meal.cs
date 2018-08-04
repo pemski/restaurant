@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,14 @@ namespace Restaurant
         public decimal Cost { get; }
         public string Currency { get; }
         public MealType Type { get; }
-        public IEnumerable<Additive> AvailableAdditives { get; }
-        public IEnumerable<Additive> AvailableMandatoryAdditives { get; }
         public IAdditiveCollection SelectedAdditives { get; }
+
+        private IEnumerable<Additive> availableAdditives { get; }
+        public IEnumerable<Additive> AvailableAdditives { get { foreach (var additive in availableAdditives) yield return additive; } }
+
+        private IEnumerable<Additive> availableMandatoryAdditives { get; }
+        public IEnumerable<Additive> AvailableMandatoryAdditives { get { foreach (var additive in availableMandatoryAdditives) yield return additive; } }
+
 
 
         /// <summary>
@@ -62,8 +68,8 @@ namespace Restaurant
             this.Name = name;
             this.Cost = cost;
             this.Currency = currency;
-            this.AvailableAdditives = availableAdditivesFactory.CreateAdditives();
-            this.AvailableMandatoryAdditives = availableMandatoryAdditivesFactory.CreateAdditives();
+            this.availableAdditives = availableAdditivesFactory.CreateAdditives();
+            this.availableMandatoryAdditives = availableMandatoryAdditivesFactory.CreateAdditives();
         }
 
 
@@ -84,8 +90,8 @@ namespace Restaurant
             this.Cost = cost;
             this.Currency = currency;
             this.Type = type;
-            this.AvailableAdditives = availableAdditives;
-            this.AvailableMandatoryAdditives = AvailableMandatoryAdditives;
+            this.availableAdditives = availableAdditives;
+            this.availableMandatoryAdditives = this.availableMandatoryAdditives;
             this.SelectedAdditives = selectedAdditives;
         }
 
@@ -121,8 +127,8 @@ namespace Restaurant
 
         public object Clone()
         {
-            return new Meal(this.Name, this.Cost, this.Currency, (MealType)this.Type.Clone(), CopyAdditiveCollection(this.AvailableAdditives),
-                CopyAdditiveCollection(this.AvailableMandatoryAdditives), (IAdditiveCollection)this.SelectedAdditives.Clone());
+            return new Meal(this.Name, this.Cost, this.Currency, (MealType)this.Type.Clone(), CopyAdditiveCollection(this.availableAdditives),
+                CopyAdditiveCollection(this.availableMandatoryAdditives), (IAdditiveCollection)this.SelectedAdditives.Clone());
         }
 
 
