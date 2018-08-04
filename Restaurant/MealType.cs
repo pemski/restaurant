@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public sealed class MealType
+    public sealed class MealType : ICloneable
     {
         private string description;
 
@@ -26,6 +26,12 @@ namespace Restaurant
         public override string ToString()
         {
             return this.description;
+        }
+
+
+        public object Clone()
+        {
+            return new MealType(description);
         }
     }
 }

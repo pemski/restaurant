@@ -39,5 +39,14 @@ namespace Restaurant
         {
             return Additives.Count();
         }
+
+
+        public object Clone()
+        {
+            IAdditiveCollection clone = new AdditiveHashSet();
+            foreach (var additive in this.Additives)
+                clone.Add(additive);
+            return clone;
+        }
     }
 }

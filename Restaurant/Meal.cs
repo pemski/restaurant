@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class Meal
+    public class Meal : IEquatable<Meal>, ICloneable
     {
         public string Name { get; }
         public decimal Cost { get; }
@@ -20,9 +20,9 @@ namespace Restaurant
         /// <summary>
         /// Creates a Meal object. Sets Currency field as default value: "zł".
         /// </summary>
-        /// <param name="name">Name of a meal</param>
-        /// <param name="cost">Cost of a meal</param>
-        /// <param name="type">Type of a meal (pizza, soup, etc.)</param>
+        /// <param name="name">Name of the meal</param>
+        /// <param name="cost">Cost of the meal</param>
+        /// <param name="type">Type of the meal (pizza, soup, etc.)</param>
         /// <param name="availableAdditivesFactory">Object which creates a collection of available additives for the meal</param>
         /// <param name="availableMandatoryAdditivesFactory">Object which creates a collection of available additives for the meal from which one must be added to the meal (rice, potatoes, etc.)</param>
         /// <param name="additiveCollection">A collection to which selected additives are added</param>
@@ -33,9 +33,10 @@ namespace Restaurant
         /// <summary>
         /// Creates a Meal object.
         /// </summary>
-        /// <param name="name">Name of a meal</param>
-        /// <param name="cost">Cost of a meal</param>
-        /// <param name="type">Type of a meal (pizza, soup, etc.)</param>
+        /// <param name="name">Name of thr meal</param>
+        /// <param name="cost">Cost of thr meal</param>
+        /// <param name="currency">Currency of the cost</param>
+        /// <param name="type">Type of thr meal (pizza, soup, etc.)</param>
         /// <param name="availableAdditivesFactory">Object which creates a collection of available additives for the meal</param>
         /// <param name="availableMandatoryAdditivesFactory">Object which creates a collection of available additives for the meal from which one must be added to the meal (rice, potatoes, etc.)</param>
         /// <param name="additiveCollection">A collection to which selected additives are added</param>
@@ -63,6 +64,73 @@ namespace Restaurant
             this.Currency = currency;
             this.AvailableAdditives = availableAdditivesFactory.CreateAdditives();
             this.AvailableMandatoryAdditives = availableMandatoryAdditivesFactory.CreateAdditives();
+        }
+
+
+        /// <summary>
+        /// Private constructor for cloning purpose.
+        /// </summary>
+        /// <param name="name">Name of the meal</param>
+        /// <param name="cost">Cost of the meal</param>
+        /// <param name="currency">Currency of the cost</param>
+        /// <param name="type">Type of the meal (pizza, soup, etc.)</param>
+        /// <param name="availableAdditives">A collection of available additives for the meal</param>
+        /// <param name="availableMandatoryAdditives">A collection of available additives for the meal from which one must be added to the meal (rice, potatoes, etc.)</param>
+        /// <param name="selectedAdditives">A collection of selected additives</param>
+        private Meal(string name, decimal cost, string currency, MealType type, IEnumerable<Additive> availableAdditives,
+            IEnumerable<Additive> availableMandatoryAdditives, IAdditiveCollection selectedAdditives)
+        {
+            this.Name = name;
+            this.Cost = cost;
+            this.Currency = currency;
+            this.Type = type;
+            this.AvailableAdditives = availableAdditives;
+            this.AvailableMandatoryAdditives = AvailableMandatoryAdditives;
+            this.SelectedAdditives = selectedAdditives;
+        }
+
+
+        public bool Equals(Meal other)
+        {
+            if (other == null)
+                throw new ArgumentNullException("other", "Meal.Equals: cannot check equality with null.");
+
+            return 
+                CompareAdditives(other.SelectedAdditives) &&
+                this.Name.Equals(other.Name) &&
+                this.Cost == other.Cost &&
+                this.Currency.Equals(other.Currency) &&
+                this.Type.ToString().Equals(other.Type.ToString());
+        }
+
+
+        private bool CompareAdditives(IAdditiveCollection otherAdditives)
+        {
+            if (this.SelectedAdditives.GetLength() != otherAdditives.GetLength())
+                return false;
+
+            foreach (var additive in this.SelectedAdditives.Additives)
+            {
+                if (!otherAdditives.Additives.Contains(additive))
+                    return false;
+            }
+
+            return true;
+        }
+
+
+        public object Clone()
+        {
+            return new Meal(this.Name, this.Cost, this.Currency, (MealType)this.Type.Clone(), CopyAdditiveCollection(this.AvailableAdditives),
+                CopyAdditiveCollection(this.AvailableMandatoryAdditives), (IAdditiveCollection)this.SelectedAdditives.Clone());
+        }
+
+
+        private IEnumerable<Additive> CopyAdditiveCollection(IEnumerable<Additive> source)
+        {
+            Additive[] availableAdditivesArray = new Additive[source.Count()];
+            source.ToList().CopyTo(availableAdditivesArray);
+            return availableAdditivesArray.ToList();
         }
     }
 }

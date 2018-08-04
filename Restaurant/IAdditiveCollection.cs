@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public interface IAdditiveCollection
+    public interface IAdditiveCollection : ICloneable
     {
         IEnumerable<Additive> Additives { get; }
         IEnumerable<Additive> CreateCollection();
