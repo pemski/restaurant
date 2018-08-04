@@ -125,6 +125,18 @@ namespace Restaurant
         }
 
 
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 23 + this.Name.GetHashCode();
+            hash = hash * 23 + this.Cost.GetHashCode();
+            hash = hash * 23 + this.Currency.GetHashCode();
+            hash = hash * 23 + this.Type.GetHashCode();
+            hash = hash * 23 + this.SelectedAdditives.GetHashCode();
+            return hash;
+        }
+
+
         public object Clone()
         {
             return new Meal(this.Name, this.Cost, this.Currency, (MealType)this.Type.Clone(), CopyAdditiveCollection(this.availableAdditives),
