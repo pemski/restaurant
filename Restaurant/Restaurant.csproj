@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditiveChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdditiveChooser.Designer.cs">
+      <DependentUpon>AdditiveChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="IAdditiveCollection.cs" />
     <Compile Include="IAdditiveFactory.cs" />
@@ -58,6 +64,12 @@
     <Compile Include="MainCourseAdditiveFactory.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Additive.cs" />
+    <Compile Include="MealChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MealChooser.Designer.cs">
+      <DependentUpon>MealChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="MealType.cs" />
     <Compile Include="MeatAdditiveFactory.cs" />
     <Compile Include="Menu.cs" />
@@ -66,8 +78,14 @@
     <Compile Include="PizzaAdditiveFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdditiveChooser.resx">
+      <DependentUpon>AdditiveChooser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MealChooser.resx">
+      <DependentUpon>MealChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
