@@ -30,12 +30,14 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.pMeals = new System.Windows.Forms.Panel();
+            this.pSummary = new System.Windows.Forms.Panel();
             this.pMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pMain
             // 
             this.pMain.BackColor = System.Drawing.Color.White;
+            this.pMain.Controls.Add(this.pSummary);
             this.pMain.Controls.Add(this.pMeals);
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
@@ -46,11 +48,21 @@
             // pMeals
             // 
             this.pMeals.AutoScroll = true;
+            this.pMeals.BackColor = System.Drawing.Color.Transparent;
             this.pMeals.Dock = System.Windows.Forms.DockStyle.Left;
             this.pMeals.Location = new System.Drawing.Point(0, 0);
             this.pMeals.Name = "pMeals";
             this.pMeals.Size = new System.Drawing.Size(427, 473);
             this.pMeals.TabIndex = 0;
+            // 
+            // pSummary
+            // 
+            this.pSummary.BackColor = System.Drawing.Color.Transparent;
+            this.pSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pSummary.Location = new System.Drawing.Point(427, 0);
+            this.pSummary.Name = "pSummary";
+            this.pSummary.Size = new System.Drawing.Size(262, 473);
+            this.pSummary.TabIndex = 1;
             // 
             // FMain
             // 
@@ -71,6 +83,7 @@
 
         private System.Windows.Forms.Panel pMain;
         private System.Windows.Forms.Panel pMeals;
+        private System.Windows.Forms.Panel pSummary;
     }
 }
 

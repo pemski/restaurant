@@ -18,14 +18,14 @@ namespace Restaurant
             get { return meal; }
             set
             {
-                meal = value;
-                AddsChooser.Meal = value;
+                meal = value ?? throw new ArgumentNullException("MealChooser.Meal: cannot assign null to the property.");
+                additiveChooser.Meal = value;
                 lName.Text = value.Name;
                 lCost.Text = String.Format("{0} {1}", value.Cost, value.Currency);
             }
         }
         public Client Client { get; set; }
-        private AdditiveChooser AddsChooser;
+        private AdditiveChooser additiveChooser;
 
 
         /// <summary>
@@ -36,15 +36,27 @@ namespace Restaurant
         {
             InitializeComponent();
 
-            AddsChooser = new AdditiveChooser();
+            additiveChooser = new AdditiveChooser();
+        }
+
+
+        private void MealChooser_Load(object sender, EventArgs e)
+        {
+            pAdditives.Controls.Add(additiveChooser);
+            additiveChooser.Dock = DockStyle.Fill;
+            additiveChooser.Visible = false;
+        }
+
+
+        private void bExpandAdditives_Click(object sender, EventArgs e)
+        {
+            additiveChooser.Visible = true;
         }
 
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            pAdditives.Controls.Add(AddsChooser);
-            AddsChooser.Dock = DockStyle.Fill;
-            AddsChooser.Show();
+
         }
     }
 }

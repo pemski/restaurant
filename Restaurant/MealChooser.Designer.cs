@@ -30,9 +30,10 @@
         {
             this.lName = new System.Windows.Forms.Label();
             this.eQuantity = new System.Windows.Forms.NumericUpDown();
-            this.bAdd = new System.Windows.Forms.Button();
+            this.bExpandAdditives = new System.Windows.Forms.Button();
             this.lCost = new System.Windows.Forms.Label();
             this.pMain = new System.Windows.Forms.Panel();
+            this.bAdd = new System.Windows.Forms.Button();
             this.pAdditives = new System.Windows.Forms.Panel();
             this.pMargin = new System.Windows.Forms.Panel();
             this.pBottom = new System.Windows.Forms.Panel();
@@ -53,7 +54,7 @@
             // eQuantity
             // 
             this.eQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.eQuantity.Location = new System.Drawing.Point(205, 7);
+            this.eQuantity.Location = new System.Drawing.Point(179, 7);
             this.eQuantity.Name = "eQuantity";
             this.eQuantity.Size = new System.Drawing.Size(55, 20);
             this.eQuantity.TabIndex = 1;
@@ -63,16 +64,16 @@
             0,
             0});
             // 
-            // bAdd
+            // bExpandAdditives
             // 
-            this.bAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bAdd.Location = new System.Drawing.Point(266, 7);
-            this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(20, 20);
-            this.bAdd.TabIndex = 2;
-            this.bAdd.Text = "+";
-            this.bAdd.UseVisualStyleBackColor = true;
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            this.bExpandAdditives.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bExpandAdditives.Location = new System.Drawing.Point(240, 7);
+            this.bExpandAdditives.Name = "bExpandAdditives";
+            this.bExpandAdditives.Size = new System.Drawing.Size(20, 20);
+            this.bExpandAdditives.TabIndex = 2;
+            this.bExpandAdditives.Text = "v";
+            this.bExpandAdditives.UseVisualStyleBackColor = true;
+            this.bExpandAdditives.Click += new System.EventHandler(this.bExpandAdditives_Click);
             // 
             // lCost
             // 
@@ -88,6 +89,7 @@
             this.pMain.AutoSize = true;
             this.pMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pMain.Controls.Add(this.bAdd);
+            this.pMain.Controls.Add(this.bExpandAdditives);
             this.pMain.Controls.Add(this.lCost);
             this.pMain.Controls.Add(this.lName);
             this.pMain.Controls.Add(this.eQuantity);
@@ -96,6 +98,17 @@
             this.pMain.Name = "pMain";
             this.pMain.Size = new System.Drawing.Size(289, 41);
             this.pMain.TabIndex = 4;
+            // 
+            // bAdd
+            // 
+            this.bAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bAdd.Location = new System.Drawing.Point(266, 7);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(20, 20);
+            this.bAdd.TabIndex = 4;
+            this.bAdd.Text = "+";
+            this.bAdd.UseVisualStyleBackColor = true;
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // pAdditives
             // 
@@ -139,6 +152,7 @@
             this.Controls.Add(this.pBottom);
             this.Name = "MealChooser";
             this.Size = new System.Drawing.Size(289, 41);
+            this.Load += new System.EventHandler(this.MealChooser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eQuantity)).EndInit();
             this.pMain.ResumeLayout(false);
             this.pMain.PerformLayout();
@@ -153,11 +167,12 @@
 
         private System.Windows.Forms.Label lName;
         private System.Windows.Forms.NumericUpDown eQuantity;
-        private System.Windows.Forms.Button bAdd;
+        private System.Windows.Forms.Button bExpandAdditives;
         private System.Windows.Forms.Label lCost;
         private System.Windows.Forms.Panel pMain;
         private System.Windows.Forms.Panel pAdditives;
         private System.Windows.Forms.Panel pMargin;
         private System.Windows.Forms.Panel pBottom;
+        private System.Windows.Forms.Button bAdd;
     }
 }
