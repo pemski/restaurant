@@ -30,6 +30,7 @@ namespace Restaurant
             this.VisibleChanged += AdditiveChooser_VisibleChanged;
         }
 
+
         private void AdditiveChooser_Load(object sender, EventArgs e)
         {
             if (DesignMode)

@@ -37,6 +37,13 @@ namespace Restaurant
             InitializeComponent();
 
             additiveChooser = new AdditiveChooser();
+            additiveChooser.VisibleChanged += AdditiveChooser_VisibleChanged;
+        }
+
+
+        private void AdditiveChooser_VisibleChanged(object sender, EventArgs e)
+        {
+            SetExpandSymbol();
         }
 
 
@@ -51,13 +58,18 @@ namespace Restaurant
         private void bExpandAdditives_Click(object sender, EventArgs e)
         {
             additiveChooser.Visible = !additiveChooser.Visible;
+        }
+
+
+        private void SetExpandSymbol()
+        {
             bExpandAdditives.Text = additiveChooser.Visible ? "^" : "v"; //wish for sth more aesthetic
         }
 
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-
+            additiveChooser.Visible = false;
         }
     }
 }
