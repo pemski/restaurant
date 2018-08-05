@@ -12,13 +12,25 @@ namespace Restaurant
 {
     public partial class MealChooser : UserControl
     {
-        private Meal meal;
-        public Meal Meal
+        private Meal baseMeal;
+        public Meal BaseMeal
         {
-            get { return meal; }
+            get { return baseMeal; }
             set
             {
-                meal = value ?? throw new ArgumentNullException("MealChooser.Meal: cannot assign null to the property.");
+                baseMeal = value;
+                ResetOrderedMeal();
+            }
+        }
+
+
+        private Meal orderedMeal;
+        public Meal OrderedMeal
+        {
+            get { return orderedMeal; }
+            private set
+            {
+                orderedMeal = value ?? throw new ArgumentNullException("MealChooser.OrderedMeal: cannot assign null to the property.");
                 additiveChooser.Meal = value;
                 lName.Text = value.Name;
                 lCost.Text = String.Format("{0} {1}", value.Cost, value.Currency);
@@ -29,8 +41,9 @@ namespace Restaurant
 
 
         /// <summary>
-        /// Control for adding a specified meal for a client. A meal and a client must be specified via 
-        /// properties Meal, Client.
+        /// Control for adding a specified meal for a client. A client must be assigned to Client property.
+        /// BaseMeal is a default-state meal of the chooser and must be assigned. OrderedMeal is
+        /// a meal with additives that the client orders.
         /// </summary>
         public MealChooser()
         {
@@ -70,6 +83,13 @@ namespace Restaurant
         private void bAdd_Click(object sender, EventArgs e)
         {
             additiveChooser.Visible = false;
+            ResetOrderedMeal();
+        }
+
+
+        private void ResetOrderedMeal()
+        {
+            OrderedMeal = BaseMeal.Clone() as Meal;
         }
     }
 }

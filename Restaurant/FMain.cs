@@ -39,7 +39,7 @@ namespace Restaurant
                 {
                     var chooser = new MealChooser();
                     chooser.Client = this.client;
-                    chooser.Meal = meal.Clone() as Meal;
+                    chooser.BaseMeal = meal.Clone() as Meal;
                     chooser.Dock = DockStyle.Top;
                     pMeals.Controls.Add(chooser);
                 }
