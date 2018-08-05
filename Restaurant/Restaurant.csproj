@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="IAdditiveCollection.cs" />
     <Compile Include="IAdditiveFactory.cs" />
     <Compile Include="AdditiveHashSet.cs" />
@@ -59,7 +60,9 @@
     <Compile Include="Additive.cs" />
     <Compile Include="MealType.cs" />
     <Compile Include="MeatAdditiveFactory.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="NullAdditiveFactory.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="PizzaAdditiveFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
