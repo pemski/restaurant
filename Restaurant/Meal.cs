@@ -91,7 +91,7 @@ namespace Restaurant
             this.Currency = currency;
             this.Type = type;
             this.availableAdditives = availableAdditives;
-            this.availableMandatoryAdditives = this.availableMandatoryAdditives;
+            this.availableMandatoryAdditives = availableMandatoryAdditives;
             this.SelectedAdditives = selectedAdditives;
         }
 
@@ -102,7 +102,7 @@ namespace Restaurant
                 throw new ArgumentNullException("other", "Meal.Equals: cannot check equality with null.");
 
             return 
-                CompareAdditives(other.SelectedAdditives) &&
+                CompareAdditivesCollection(other.SelectedAdditives) &&
                 this.Name.Equals(other.Name) &&
                 this.Cost == other.Cost &&
                 this.Currency.Equals(other.Currency) &&
@@ -110,7 +110,7 @@ namespace Restaurant
         }
 
 
-        private bool CompareAdditives(IAdditiveCollection otherAdditives)
+        private bool CompareAdditivesCollection(IAdditiveCollection otherAdditives)
         {
             if (this.SelectedAdditives.GetLength() != otherAdditives.GetLength())
                 return false;
