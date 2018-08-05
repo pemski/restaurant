@@ -13,8 +13,10 @@ namespace Restaurant
     public partial class AdditiveChooser : UserControl
     {
         public Meal Meal { get; set; }
-        private Dictionary<Additive, RadioButton> MandatoryAdditives;
-        private Dictionary<Additive, CheckBox> Additives;
+        private Dictionary<Additive, RadioButton> mandatoryAdditives;
+        public IEnumerable<KeyValuePair<Additive, RadioButton>> MandatoryAdditives { get { foreach (var add in mandatoryAdditives) yield return add; } }
+        private Dictionary<Additive, CheckBox> additives;
+        public IEnumerable<KeyValuePair<Additive, CheckBox>> Additives { get { foreach (var add in additives) yield return add; } }
 
 
         /// <summary>
@@ -24,8 +26,8 @@ namespace Restaurant
         {
             InitializeComponent();
 
-            MandatoryAdditives = new Dictionary<Additive, RadioButton>();
-            Additives = new Dictionary<Additive, CheckBox>();
+            mandatoryAdditives = new Dictionary<Additive, RadioButton>();
+            additives = new Dictionary<Additive, CheckBox>();
 
             this.VisibleChanged += AdditiveChooser_VisibleChanged;
         }
@@ -52,11 +54,11 @@ namespace Restaurant
                 radio.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
                 radio.Dock = DockStyle.Bottom;
                 pMandatoryAddives.Controls.Add(radio);
-                MandatoryAdditives.Add(additive, radio);
+                mandatoryAdditives.Add(additive, radio);
             }
 
-            if (MandatoryAdditives.Count > 0)
-                MandatoryAdditives.First().Value.Checked = true;
+            if (mandatoryAdditives.Count > 0)
+                mandatoryAdditives.First().Value.Checked = true;
         }
 
 
@@ -68,7 +70,7 @@ namespace Restaurant
                 check.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
                 check.Dock = DockStyle.Bottom;
                 pAdditives.Controls.Add(check);
-                Additives.Add(additive, check);
+                additives.Add(additive, check);
             }
         }
 
@@ -98,10 +100,10 @@ namespace Restaurant
 
         private void Reset()
         {
-            if (MandatoryAdditives.Count > 0)
-                MandatoryAdditives.First().Value.Checked = true;
+            if (mandatoryAdditives.Count > 0)
+                mandatoryAdditives.First().Value.Checked = true;
 
-            foreach (var check in Additives.Values)
+            foreach (var check in additives.Values)
                 check.Checked = false;
         }
     }

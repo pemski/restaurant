@@ -82,8 +82,34 @@ namespace Restaurant
 
         private void bAdd_Click(object sender, EventArgs e)
         {
+            AddAdditivesToOrderedMeal();
+            PlaceOrder();
+
             additiveChooser.Visible = false;
+            ResetQuantity();
             ResetOrderedMeal();
+        }
+
+
+        private void AddAdditivesToOrderedMeal()
+        {
+            foreach (var additive in additiveChooser.MandatoryAdditives.Where(k => k.Value.Checked == true))
+                OrderedMeal.SelectedAdditives.Add(additive.Key);
+
+            foreach (var additive in additiveChooser.Additives.Where(k => k.Value.Checked == true))
+                OrderedMeal.SelectedAdditives.Add(additive.Key);
+        }
+
+
+        private void PlaceOrder()
+        {
+            this.Client.Order.Add(OrderedMeal, (int)eQuantity.Value);
+        }
+
+
+        private void ResetQuantity()
+        {
+            eQuantity.Value = 1;
         }
 
 
