@@ -50,7 +50,8 @@ namespace Restaurant
 
         private void bExpandAdditives_Click(object sender, EventArgs e)
         {
-            additiveChooser.Visible = true;
+            additiveChooser.Visible = !additiveChooser.Visible;
+            bExpandAdditives.Text = additiveChooser.Visible ? "^" : "v"; //wish for sth more aesthetic
         }
 
 

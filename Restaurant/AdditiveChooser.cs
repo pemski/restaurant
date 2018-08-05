@@ -26,8 +26,9 @@ namespace Restaurant
 
             MandatoryAdditives = new Dictionary<Additive, RadioButton>();
             Additives = new Dictionary<Additive, CheckBox>();
-        }
 
+            this.VisibleChanged += AdditiveChooser_VisibleChanged;
+        }
 
         private void AdditiveChooser_Load(object sender, EventArgs e)
         {
@@ -44,7 +45,7 @@ namespace Restaurant
 
         private void LoadMandatoryAdditives()
         {
-            foreach(var additive in Meal.AvailableMandatoryAdditives)
+            foreach (var additive in Meal.AvailableMandatoryAdditives)
             {
                 var radio = new RadioButton();
                 radio.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
@@ -60,7 +61,7 @@ namespace Restaurant
 
         private void LoadAdditives()
         {
-            foreach(var additive in Meal.AvailableAdditives)
+            foreach (var additive in Meal.AvailableAdditives)
             {
                 var check = new CheckBox();
                 check.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
@@ -84,6 +85,23 @@ namespace Restaurant
                 Color.Black, 1, ButtonBorderStyle.Solid,
                 Color.Black, 0, ButtonBorderStyle.None,
                 Color.Black, 0, ButtonBorderStyle.None);
+        }
+
+
+        private void AdditiveChooser_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!this.Visible)
+                Reset();
+        }
+
+
+        private void Reset()
+        {
+            if (MandatoryAdditives.Count > 0)
+                MandatoryAdditives.First().Value.Checked = true;
+
+            foreach (var check in Additives.Values)
+                check.Checked = false;
         }
     }
 }
