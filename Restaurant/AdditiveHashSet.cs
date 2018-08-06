@@ -48,5 +48,28 @@ namespace Restaurant
                 clone.Add(additive);
             return clone;
         }
+
+
+        public bool Equals(IAdditiveCollection other)
+        {
+            if (this.GetLength() != other.GetLength())
+                return false;
+
+            foreach(var add in this.Additives)
+            {
+                if (!other.Additives.Contains(add))
+                    return false;
+            }
+            return true;
+        }
+
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            foreach (var add in Additives)
+                hash = hash * 23 + add.GetHashCode();
+            return hash;
+        }
     }
 }

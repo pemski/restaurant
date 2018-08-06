@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public sealed class MealType : ICloneable
+    public sealed class MealType : ICloneable, IEquatable<MealType>
     {
         private string description;
 
@@ -32,6 +32,18 @@ namespace Restaurant
         public object Clone()
         {
             return new MealType(description);
+        }
+
+
+        public bool Equals(MealType other)
+        {
+            return this.ToString().Equals(other.ToString());
+        }
+
+
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
         }
     }
 }

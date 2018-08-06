@@ -42,5 +42,19 @@ namespace Restaurant
             foreach (int q in Enumerable.Range(0, quantity))
                 orderedMeals.Remove(meal);
         }
+
+
+        public override string ToString()
+        {
+            StringBuilder text = new StringBuilder();
+            foreach (var meal in orderedMeals.Distinct())
+            {
+                int quantity = OrderedMeals.Where(m => m.Equals(meal)).Count();
+                if (quantity > 1)
+                    text.AppendFormat("(x{0}) ", quantity);
+                text.AppendLine(meal.ToString());
+            }
+            return text.ToString().Trim();
+        }
     }
 }

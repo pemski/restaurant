@@ -102,27 +102,12 @@ namespace Restaurant
             if (other == null)
                 throw new ArgumentNullException("other", "Meal.Equals: cannot check equality with null.");
 
-            return 
-                CompareAdditivesCollection(other.SelectedAdditives) &&
+            return
+                this.SelectedAdditives.Equals(other.SelectedAdditives) &&
                 this.Name.Equals(other.Name) &&
                 this.Cost == other.Cost &&
                 this.Currency.Equals(other.Currency) &&
-                this.Type.ToString().Equals(other.Type.ToString());
-        }
-
-
-        private bool CompareAdditivesCollection(IAdditiveCollection otherAdditives)
-        {
-            if (this.SelectedAdditives.GetLength() != otherAdditives.GetLength())
-                return false;
-
-            foreach (var additive in this.SelectedAdditives.Additives)
-            {
-                if (!otherAdditives.Additives.Contains(additive))
-                    return false;
-            }
-
-            return true;
+                this.Type.Equals(other.Type);
         }
 
 
