@@ -35,5 +35,12 @@ namespace Test_Restaurant
             IHistoryManagement historyMngt = new HistoryXML(filePath);
             historyMngt.Save(new HistoryData { Client = "client", Date = DateTime.Now }, order);
         }
+
+        [Test]
+        public void Test_LoadHistory()
+        {
+            IHistoryManagement historyMngt = new HistoryXML(filePath);
+            Console.WriteLine(historyMngt.Load());
+        }
     }
 }

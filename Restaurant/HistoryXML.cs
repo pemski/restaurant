@@ -29,7 +29,11 @@ namespace Restaurant
 
         public string Load()
         {
-            throw new NotImplementedException();
+            if (!File.Exists(FilePath))
+                return "";
+
+            History history = Deserialize();
+            return history.ToString();
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,17 @@ namespace Restaurant
             Orders = new List<Order>();
         }
 
+        public override string ToString()
+        {
+            StringBuilder text = new StringBuilder();
+            foreach (var order in Orders)
+            {
+                text.AppendLine(order.ToString());
+                text.AppendLine();
+            }
+            return text.ToString().Trim();
+        }
+
 
         public class Order
         {
@@ -28,6 +40,25 @@ namespace Restaurant
             public Order()
             {
                 Meals = new List<Meal>();
+            }
+
+            public override string ToString()
+            {
+                StringBuilder text = new StringBuilder();
+                text.AppendLine(String.Format("Client: {0}.", Client));
+                text.AppendLine(String.Format("Date: {0}.", Date));
+                foreach(var meal in Meals)
+                {
+                    text.AppendLine(String.Format("\t(x{3}) {0} - {1} {2}", meal.Name, PrintDecimal(meal.Cost), meal.Currency, meal.Quantity));
+                    foreach (var add in meal.Additives)
+                        text.AppendLine(String.Format("\t\t+ {0} - {1} {2}", add.Name, PrintDecimal(add.Cost), add.Currency));
+                }
+                return text.ToString().Trim();
+            }
+
+            private string PrintDecimal(decimal input)
+            {
+                return input.ToString("N2", CultureInfo.InvariantCulture);
             }
         }
 
