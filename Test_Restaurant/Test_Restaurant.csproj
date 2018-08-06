@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Test_AdditiveHashSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_Meal.cs" />
     <Compile Include="Test_MealCloning.cs" />
     <Compile Include="Test_MealEquality.cs" />
     <Compile Include="Test_Order.cs" />
