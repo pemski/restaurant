@@ -36,6 +36,7 @@
             this.lOrder = new System.Windows.Forms.Label();
             this.pMeals = new System.Windows.Forms.Panel();
             this.lCart = new System.Windows.Forms.Label();
+            this.lSummary = new System.Windows.Forms.Label();
             this.pMain.SuspendLayout();
             this.pSummary.SuspendLayout();
             this.pOrder.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // pOrder
             // 
+            this.pOrder.Controls.Add(this.lSummary);
             this.pOrder.Controls.Add(this.bOrder);
             this.pOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pOrder.Location = new System.Drawing.Point(0, 44);
@@ -125,6 +127,16 @@
             this.lCart.Size = new System.Drawing.Size(0, 13);
             this.lCart.TabIndex = 3;
             // 
+            // lSummary
+            // 
+            this.lSummary.AutoSize = true;
+            this.lSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lSummary.Location = new System.Drawing.Point(6, 11);
+            this.lSummary.Name = "lSummary";
+            this.lSummary.Size = new System.Drawing.Size(60, 17);
+            this.lSummary.TabIndex = 1;
+            this.lSummary.Text = "Razem: ";
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +151,7 @@
             this.pSummary.ResumeLayout(false);
             this.pSummary.PerformLayout();
             this.pOrder.ResumeLayout(false);
+            this.pOrder.PerformLayout();
             this.pCart.ResumeLayout(false);
             this.pCart.PerformLayout();
             this.ResumeLayout(false);
@@ -155,6 +168,7 @@
         private System.Windows.Forms.FlowLayoutPanel pCart;
         private System.Windows.Forms.Label lOrder;
         private System.Windows.Forms.Label lCart;
+        private System.Windows.Forms.Label lSummary;
     }
 }
 
