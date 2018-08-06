@@ -49,16 +49,11 @@ namespace Restaurant
                 text.AppendLine(String.Format("Date: {0}.", Date));
                 foreach(var meal in Meals)
                 {
-                    text.AppendLine(String.Format("\t(x{3}) {0} - {1} {2}", meal.Name, PrintDecimal(meal.Cost), meal.Currency, meal.Quantity));
+                    text.AppendLine(String.Format("\t(x{3}) {0} - {1} {2}", meal.Name, meal.Cost.PrintCost(), meal.Currency, meal.Quantity));
                     foreach (var add in meal.Additives)
-                        text.AppendLine(String.Format("\t\t+ {0} - {1} {2}", add.Name, PrintDecimal(add.Cost), add.Currency));
+                        text.AppendLine(String.Format("\t\t+ {0} - {1} {2}", add.Name, add.Cost.PrintCost(), add.Currency));
                 }
                 return text.ToString().Trim();
-            }
-
-            private string PrintDecimal(decimal input)
-            {
-                return input.ToString("N2", CultureInfo.InvariantCulture);
             }
         }
 

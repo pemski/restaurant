@@ -85,9 +85,9 @@ namespace Test_Restaurant
             }
 
             StringBuilder expected = new StringBuilder();
-            expected.AppendLine("meal - 1.00 zł");
+            expected.AppendLine("(x1) meal - 1.00 zł");
             expected.AppendLine("(x2) meal2 - 5.00 zł");
-            expected.AppendLine("meal3 - 15.99 zł");
+            expected.AppendLine("(x1) meal3 - 15.99 zł");
             expected.AppendLine("\t+ add31 - 10.00 zł");
             expected.AppendLine("\t+ add32 - 1,111.01 zł");
             expected.AppendLine("(x4) meal4 - 20.00 zł");

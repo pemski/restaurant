@@ -51,7 +51,7 @@ namespace Restaurant
             foreach (var additive in Meal.AvailableMandatoryAdditives)
             {
                 var radio = new RadioButton();
-                radio.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
+                radio.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost.PrintCost(), additive.Currency);
                 radio.Dock = DockStyle.Bottom;
                 pMandatoryAddives.Controls.Add(radio);
                 mandatoryAdditives.Add(additive, radio);
@@ -67,7 +67,7 @@ namespace Restaurant
             foreach (var additive in Meal.AvailableAdditives)
             {
                 var check = new CheckBox();
-                check.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost, additive.Currency);
+                check.Text = String.Format("{0} - {1} {2}", additive.Name, additive.Cost.PrintCost(), additive.Currency);
                 check.Dock = DockStyle.Bottom;
                 pAdditives.Controls.Add(check);
                 additives.Add(additive, check);

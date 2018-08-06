@@ -40,13 +40,14 @@ namespace Restaurant
 
             if (client.Order.OrderedMeals.Count() == 0)
             {
-                lSummary.Text = "Razem: 0.00 zł";
+                decimal zeroCost = 0m;
+                lSummary.Text = String.Format("Razem: {0} zł", zeroCost.PrintCost());
             }
             else
             {
                 decimal sumCost = client.Order.OrderedMeals.Sum(r => r.Cost) + client.Order.OrderedMeals.SelectMany(r => r.SelectedAdditives.Additives).Sum(r => r.Cost);
                 string currency = client.Order.OrderedMeals.First().Currency;
-                lSummary.Text = String.Format("Razem: {0} {1}", sumCost.ToString("N2", CultureInfo.InvariantCulture), currency);
+                lSummary.Text = String.Format("Razem: {0} {1}", sumCost.PrintCost(), currency);
             }
         }
 

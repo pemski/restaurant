@@ -141,7 +141,7 @@ namespace Restaurant
         public override string ToString()
         {
             StringBuilder text = new StringBuilder();
-            text.AppendLine(String.Format("{0} - {1} {2}", Name, Cost.ToString("N2", CultureInfo.InvariantCulture), Currency));
+            text.AppendLine(String.Format("{0} - {1} {2}", Name, Cost.PrintCost(), Currency));
 
             foreach(var additive in SelectedAdditives.Additives)
             text.AppendLine(String.Format("\t+ {0}", additive.ToString()));
