@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,6 +150,18 @@ namespace Restaurant
             Additive[] availableAdditivesArray = new Additive[source.Count()];
             source.ToList().CopyTo(availableAdditivesArray);
             return availableAdditivesArray.ToList();
+        }
+
+
+        public override string ToString()
+        {
+            StringBuilder text = new StringBuilder();
+            text.AppendLine(String.Format("{0} - {1} {2}", Name, Cost.ToString("N2", CultureInfo.InvariantCulture), Currency));
+
+            foreach(var additive in SelectedAdditives.Additives)
+            text.AppendLine(String.Format("\t+ {0}", additive.ToString()));
+
+            return text.ToString().Trim();
         }
     }
 }

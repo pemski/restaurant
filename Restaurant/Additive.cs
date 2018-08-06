@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,12 @@ namespace Restaurant
             Name = name;
             Cost = cost;
             Currency = currency;
+        }
+
+
+        public override string ToString()
+        {
+            return String.Format("{0} - {1} {2}", Name, Cost.ToString("N2", CultureInfo.InvariantCulture), Currency);
         }
     }
 }
