@@ -52,6 +52,9 @@
       <DependentUpon>AdditiveChooser.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="History.cs" />
+    <Compile Include="HistoryData.cs" />
+    <Compile Include="HistoryXML.cs" />
     <Compile Include="IAdditiveCollection.cs" />
     <Compile Include="IAdditiveFactory.cs" />
     <Compile Include="AdditiveHashSet.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="IHistoryManagement.cs" />
     <Compile Include="MainCourseAdditiveFactory.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Additive.cs" />
