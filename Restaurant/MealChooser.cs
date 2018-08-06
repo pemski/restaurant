@@ -82,12 +82,21 @@ namespace Restaurant
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            AddAdditivesToOrderedMeal();
-            PlaceOrder();
-
-            additiveChooser.Visible = false;
-            ResetQuantity();
-            ResetOrderedMeal();
+            try
+            {
+                AddAdditivesToOrderedMeal();
+                PlaceOrder();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Placing order error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                additiveChooser.Visible = false;
+                ResetQuantity();
+                ResetOrderedMeal();
+            }
         }
 
 
