@@ -14,6 +14,7 @@ namespace Restaurant
     {
         private Menu menu;
         private Client client;
+        private const string Tab = "    ";
 
 
         public FMain()
@@ -22,6 +23,14 @@ namespace Restaurant
 
             menu = new Menu();
             client = new Client();
+
+            client.Order.PropertyChanged += PrintOrder;
+        }
+
+
+        private void PrintOrder(object sender, PropertyChangedEventArgs e)
+        {
+            lCart.Text = client.Order.ToString().Replace("\t", Tab);
         }
 
 

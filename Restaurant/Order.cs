@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class Order
+    public class Order : INotifyPropertyChanged
     {
         private List<Meal> orderedMeals;
         public IEnumerable<Meal> OrderedMeals { get { foreach (var meal in orderedMeals) yield return meal; } }
@@ -15,6 +16,13 @@ namespace Restaurant
         public Order()
         {
             orderedMeals = new List<Meal>();
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyOrderChange()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("OrderedMeals"));
         }
 
 
@@ -28,6 +36,7 @@ namespace Restaurant
 
             foreach (int q in Enumerable.Range(0, quantity))
                 orderedMeals.Add(meal);
+            NotifyOrderChange();
         }
 
 
@@ -41,6 +50,7 @@ namespace Restaurant
 
             foreach (int q in Enumerable.Range(0, quantity))
                 orderedMeals.Remove(meal);
+            NotifyOrderChange();
         }
 
 
@@ -50,8 +60,7 @@ namespace Restaurant
             foreach (var meal in orderedMeals.Distinct())
             {
                 int quantity = OrderedMeals.Where(m => m.Equals(meal)).Count();
-                if (quantity > 1)
-                    text.AppendFormat("(x{0}) ", quantity);
+                text.AppendFormat("(x{0}) ", quantity);
                 text.AppendLine(meal.ToString());
             }
             return text.ToString().Trim();

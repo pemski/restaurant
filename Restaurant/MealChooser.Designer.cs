@@ -54,7 +54,7 @@
             // eQuantity
             // 
             this.eQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.eQuantity.Location = new System.Drawing.Point(179, 7);
+            this.eQuantity.Location = new System.Drawing.Point(210, 7);
             this.eQuantity.Name = "eQuantity";
             this.eQuantity.Size = new System.Drawing.Size(55, 20);
             this.eQuantity.TabIndex = 1;
@@ -67,7 +67,7 @@
             // bExpandAdditives
             // 
             this.bExpandAdditives.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bExpandAdditives.Location = new System.Drawing.Point(240, 7);
+            this.bExpandAdditives.Location = new System.Drawing.Point(271, 7);
             this.bExpandAdditives.Name = "bExpandAdditives";
             this.bExpandAdditives.Size = new System.Drawing.Size(20, 20);
             this.bExpandAdditives.TabIndex = 2;
@@ -96,13 +96,13 @@
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 0);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(289, 41);
+            this.pMain.Size = new System.Drawing.Size(320, 41);
             this.pMain.TabIndex = 4;
             // 
             // bAdd
             // 
             this.bAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bAdd.Location = new System.Drawing.Point(266, 7);
+            this.bAdd.Location = new System.Drawing.Point(297, 7);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(20, 20);
             this.bAdd.TabIndex = 4;
@@ -117,7 +117,7 @@
             this.pAdditives.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pAdditives.Location = new System.Drawing.Point(40, 0);
             this.pAdditives.Name = "pAdditives";
-            this.pAdditives.Size = new System.Drawing.Size(249, 0);
+            this.pAdditives.Size = new System.Drawing.Size(280, 0);
             this.pAdditives.TabIndex = 5;
             // 
             // pMargin
@@ -137,7 +137,7 @@
             this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pBottom.Location = new System.Drawing.Point(0, 41);
             this.pBottom.Name = "pBottom";
-            this.pBottom.Size = new System.Drawing.Size(289, 0);
+            this.pBottom.Size = new System.Drawing.Size(320, 0);
             this.pBottom.TabIndex = 4;
             // 
             // MealChooser
@@ -151,7 +151,7 @@
             this.Controls.Add(this.pMain);
             this.Controls.Add(this.pBottom);
             this.Name = "MealChooser";
-            this.Size = new System.Drawing.Size(289, 41);
+            this.Size = new System.Drawing.Size(320, 41);
             this.Load += new System.EventHandler(this.MealChooser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.eQuantity)).EndInit();
             this.pMain.ResumeLayout(false);
