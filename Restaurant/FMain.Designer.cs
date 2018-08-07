@@ -31,12 +31,12 @@
             this.pMain = new System.Windows.Forms.Panel();
             this.pSummary = new System.Windows.Forms.Panel();
             this.pOrder = new System.Windows.Forms.Panel();
+            this.lSummary = new System.Windows.Forms.Label();
             this.bOrder = new System.Windows.Forms.Button();
             this.pCart = new System.Windows.Forms.FlowLayoutPanel();
+            this.lCart = new System.Windows.Forms.Label();
             this.lOrder = new System.Windows.Forms.Label();
             this.pMeals = new System.Windows.Forms.Panel();
-            this.lCart = new System.Windows.Forms.Label();
-            this.lSummary = new System.Windows.Forms.Label();
             this.pMain.SuspendLayout();
             this.pSummary.SuspendLayout();
             this.pOrder.SuspendLayout();
@@ -76,6 +76,16 @@
             this.pOrder.Size = new System.Drawing.Size(262, 36);
             this.pOrder.TabIndex = 0;
             // 
+            // lSummary
+            // 
+            this.lSummary.AutoSize = true;
+            this.lSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lSummary.Location = new System.Drawing.Point(6, 11);
+            this.lSummary.Name = "lSummary";
+            this.lSummary.Size = new System.Drawing.Size(60, 17);
+            this.lSummary.TabIndex = 1;
+            this.lSummary.Text = "Razem: ";
+            // 
             // bOrder
             // 
             this.bOrder.Dock = System.Windows.Forms.DockStyle.Right;
@@ -98,6 +108,14 @@
             this.pCart.Size = new System.Drawing.Size(262, 13);
             this.pCart.TabIndex = 2;
             // 
+            // lCart
+            // 
+            this.lCart.AutoSize = true;
+            this.lCart.Location = new System.Drawing.Point(3, 0);
+            this.lCart.Name = "lCart";
+            this.lCart.Size = new System.Drawing.Size(0, 13);
+            this.lCart.TabIndex = 3;
+            // 
             // lOrder
             // 
             this.lOrder.AutoSize = true;
@@ -118,24 +136,6 @@
             this.pMeals.Name = "pMeals";
             this.pMeals.Size = new System.Drawing.Size(427, 473);
             this.pMeals.TabIndex = 0;
-            // 
-            // lCart
-            // 
-            this.lCart.AutoSize = true;
-            this.lCart.Location = new System.Drawing.Point(3, 0);
-            this.lCart.Name = "lCart";
-            this.lCart.Size = new System.Drawing.Size(0, 13);
-            this.lCart.TabIndex = 3;
-            // 
-            // lSummary
-            // 
-            this.lSummary.AutoSize = true;
-            this.lSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lSummary.Location = new System.Drawing.Point(6, 11);
-            this.lSummary.Name = "lSummary";
-            this.lSummary.Size = new System.Drawing.Size(60, 17);
-            this.lSummary.TabIndex = 1;
-            this.lSummary.Text = "Razem: ";
             // 
             // FMain
             // 
