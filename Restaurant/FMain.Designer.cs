@@ -30,6 +30,8 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.pSummary = new System.Windows.Forms.Panel();
+            this.pCancel = new System.Windows.Forms.Panel();
+            this.bCancel = new System.Windows.Forms.Button();
             this.bHistory = new System.Windows.Forms.Button();
             this.pOrder = new System.Windows.Forms.Panel();
             this.lSummary = new System.Windows.Forms.Label();
@@ -38,13 +40,15 @@
             this.lCart = new System.Windows.Forms.Label();
             this.lOrder = new System.Windows.Forms.Label();
             this.pMeals = new System.Windows.Forms.Panel();
-            this.pCancel = new System.Windows.Forms.Panel();
-            this.bCancel = new System.Windows.Forms.Button();
+            this.pGroupSum = new System.Windows.Forms.Panel();
+            this.pHistory = new System.Windows.Forms.Panel();
             this.pMain.SuspendLayout();
             this.pSummary.SuspendLayout();
+            this.pCancel.SuspendLayout();
             this.pOrder.SuspendLayout();
             this.pCart.SuspendLayout();
-            this.pCancel.SuspendLayout();
+            this.pGroupSum.SuspendLayout();
+            this.pHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // pMain
@@ -61,10 +65,8 @@
             // pSummary
             // 
             this.pSummary.BackColor = System.Drawing.Color.Transparent;
-            this.pSummary.Controls.Add(this.pCancel);
-            this.pSummary.Controls.Add(this.bHistory);
-            this.pSummary.Controls.Add(this.pOrder);
-            this.pSummary.Controls.Add(this.pCart);
+            this.pSummary.Controls.Add(this.pGroupSum);
+            this.pSummary.Controls.Add(this.pHistory);
             this.pSummary.Controls.Add(this.lOrder);
             this.pSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pSummary.Location = new System.Drawing.Point(427, 0);
@@ -72,10 +74,31 @@
             this.pSummary.Size = new System.Drawing.Size(262, 473);
             this.pSummary.TabIndex = 1;
             // 
+            // pCancel
+            // 
+            this.pCancel.Controls.Add(this.bCancel);
+            this.pCancel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pCancel.Location = new System.Drawing.Point(0, 49);
+            this.pCancel.Name = "pCancel";
+            this.pCancel.Size = new System.Drawing.Size(262, 22);
+            this.pCancel.TabIndex = 4;
+            // 
+            // bCancel
+            // 
+            this.bCancel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bCancel.Location = new System.Drawing.Point(184, 0);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(78, 22);
+            this.bCancel.TabIndex = 0;
+            this.bCancel.Text = "Anuluj";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
             // bHistory
             // 
             this.bHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bHistory.Location = new System.Drawing.Point(127, 438);
+            this.bHistory.Location = new System.Drawing.Point(127, 3);
             this.bHistory.Name = "bHistory";
             this.bHistory.Size = new System.Drawing.Size(132, 32);
             this.bHistory.TabIndex = 3;
@@ -88,7 +111,7 @@
             this.pOrder.Controls.Add(this.lSummary);
             this.pOrder.Controls.Add(this.bOrder);
             this.pOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pOrder.Location = new System.Drawing.Point(0, 44);
+            this.pOrder.Location = new System.Drawing.Point(0, 13);
             this.pOrder.Name = "pOrder";
             this.pOrder.Size = new System.Drawing.Size(262, 36);
             this.pOrder.TabIndex = 0;
@@ -121,7 +144,7 @@
             this.pCart.Controls.Add(this.lCart);
             this.pCart.Dock = System.Windows.Forms.DockStyle.Top;
             this.pCart.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pCart.Location = new System.Drawing.Point(0, 31);
+            this.pCart.Location = new System.Drawing.Point(0, 0);
             this.pCart.Name = "pCart";
             this.pCart.Size = new System.Drawing.Size(262, 13);
             this.pCart.TabIndex = 2;
@@ -155,26 +178,26 @@
             this.pMeals.Size = new System.Drawing.Size(427, 473);
             this.pMeals.TabIndex = 0;
             // 
-            // pCancel
+            // pGroupSum
             // 
-            this.pCancel.Controls.Add(this.bCancel);
-            this.pCancel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pCancel.Location = new System.Drawing.Point(0, 80);
-            this.pCancel.Name = "pCancel";
-            this.pCancel.Size = new System.Drawing.Size(262, 22);
-            this.pCancel.TabIndex = 4;
+            this.pGroupSum.AutoScroll = true;
+            this.pGroupSum.Controls.Add(this.pCancel);
+            this.pGroupSum.Controls.Add(this.pOrder);
+            this.pGroupSum.Controls.Add(this.pCart);
+            this.pGroupSum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pGroupSum.Location = new System.Drawing.Point(0, 31);
+            this.pGroupSum.Name = "pGroupSum";
+            this.pGroupSum.Size = new System.Drawing.Size(262, 404);
+            this.pGroupSum.TabIndex = 5;
             // 
-            // bCancel
+            // pHistory
             // 
-            this.bCancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bCancel.Location = new System.Drawing.Point(184, 0);
-            this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(78, 22);
-            this.bCancel.TabIndex = 0;
-            this.bCancel.Text = "Anuluj";
-            this.bCancel.UseVisualStyleBackColor = true;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            this.pHistory.Controls.Add(this.bHistory);
+            this.pHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pHistory.Location = new System.Drawing.Point(0, 435);
+            this.pHistory.Name = "pHistory";
+            this.pHistory.Size = new System.Drawing.Size(262, 38);
+            this.pHistory.TabIndex = 6;
             // 
             // FMain
             // 
@@ -189,11 +212,14 @@
             this.pMain.ResumeLayout(false);
             this.pSummary.ResumeLayout(false);
             this.pSummary.PerformLayout();
+            this.pCancel.ResumeLayout(false);
             this.pOrder.ResumeLayout(false);
             this.pOrder.PerformLayout();
             this.pCart.ResumeLayout(false);
             this.pCart.PerformLayout();
-            this.pCancel.ResumeLayout(false);
+            this.pGroupSum.ResumeLayout(false);
+            this.pGroupSum.PerformLayout();
+            this.pHistory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,6 +238,8 @@
         private System.Windows.Forms.Button bHistory;
         private System.Windows.Forms.Panel pCancel;
         private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Panel pGroupSum;
+        private System.Windows.Forms.Panel pHistory;
     }
 }
 
