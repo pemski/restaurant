@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Restaurant
         private Menu menu;
         private Client client;
         private const string Tab = "    ";
+        private readonly string HistoryDir = Path.Combine(Application.StartupPath, "order_history");
+        private string HistoryPath { get => Path.Combine(HistoryDir, String.Format("history_{0}.xml", DateTime.Today.ToString("yyyyMMdd"))); }
 
 
         public FMain()
@@ -96,8 +99,19 @@ namespace Restaurant
             {
                 fmail.ShowDialog();
                 if (fmail.DialogResult == DialogResult.OK)
+                {
+                    IHistoryManagement historyMngt = new HistoryXML(HistoryPath);
+                    historyMngt.Save(new HistoryData { Client = "main client", Date = DateTime.Now }, client.Order);
                     client.Order.ResetOrder();
+                }
             }
+        }
+
+
+        private void bHistory_Click(object sender, EventArgs e)
+        {
+            using (FHistory fHist = new FHistory(HistoryDir))
+                fHist.ShowDialog();
         }
     }
 }
