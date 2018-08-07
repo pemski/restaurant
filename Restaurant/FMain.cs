@@ -98,7 +98,9 @@ namespace Restaurant
             using (FMail fmail = new FMail(client.Order))
             {
                 fmail.ShowDialog();
-                if (fmail.DialogResult == DialogResult.OK)
+                //added "true" to IF so that testing of history is more comfortable (no need of actually
+                //writing credentials, etc.)
+                if (true || fmail.DialogResult == DialogResult.OK)
                 {
                     IHistoryManagement historyMngt = new HistoryXML(HistoryPath);
                     historyMngt.Save(new HistoryData { Client = "main client", Date = DateTime.Now }, client.Order);
