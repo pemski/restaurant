@@ -115,5 +115,11 @@ namespace Restaurant
             using (FHistory fHist = new FHistory(HistoryDir))
                 fHist.ShowDialog();
         }
+
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            client.Order.ResetOrder();
+        }
     }
 }
