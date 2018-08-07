@@ -46,8 +46,8 @@ namespace Restaurant
             public override string ToString()
             {
                 StringBuilder text = new StringBuilder();
-                text.AppendLine(String.Format("Client: {0}.", Client));
-                text.AppendLine(String.Format("Date: {0}.", Date));
+                text.AppendLine(String.Format("Klient: {0}.", Client));
+                text.AppendLine(String.Format("Data: {0}.", Date));
                 foreach (var meal in Meals)
                 {
                     text.AppendLine(String.Format("\t(x{3}) {0} - {1} {2}", meal.Name, meal.Cost.PrintCost(), meal.Currency, meal.Quantity));
@@ -55,7 +55,7 @@ namespace Restaurant
                         text.AppendLine(String.Format("\t\t+ {0} - {1} {2}", add.Name, add.Cost.PrintCost(), add.Currency));
                 }
                 if (!String.IsNullOrWhiteSpace(Comment))
-                    text.Append(String.Format("Comment: {0}", Comment));
+                    text.Append(String.Format("Uwagi: {0}", Comment));
                 return text.ToString().Trim();
             }
         }
