@@ -32,6 +32,7 @@ namespace Restaurant
             {
                 orderedMeal = value ?? throw new ArgumentNullException("MealChooser.OrderedMeal: cannot assign null to the property.");
                 additiveChooser.Meal = value;
+                bExpandAdditives.Visible = value.AvailableAdditives.Count() + value.AvailableMandatoryAdditives.Count() > 0;
                 lName.Text = value.Name;
                 lCost.Text = String.Format("{0} {1}", value.Cost.PrintCost(), value.Currency);
             }
