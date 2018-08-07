@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Restaurant
         private Menu menu;
         private Client client;
         private const string Tab = "    ";
+        private readonly string HistoryDir = Path.Combine(Application.StartupPath, "order_history");
+        private string HistoryPath { get => Path.Combine(HistoryDir, String.Format("history_{0}.xml", DateTime.Today.ToString("yyyyMMdd"))); }
 
 
         public FMain()
@@ -95,9 +98,22 @@ namespace Restaurant
             using (FMail fmail = new FMail(client.Order))
             {
                 fmail.ShowDialog();
-                if (fmail.DialogResult == DialogResult.OK)
+                //added "true" to IF so that testing of history is more comfortable (no need of actually
+                //writing credentials, etc.)
+                if (true || fmail.DialogResult == DialogResult.OK)
+                {
+                    IHistoryManagement historyMngt = new HistoryXML(HistoryPath);
+                    historyMngt.Save(new HistoryData { Client = "main client", Date = DateTime.Now }, client.Order);
                     client.Order.ResetOrder();
+                }
             }
+        }
+
+
+        private void bHistory_Click(object sender, EventArgs e)
+        {
+            using (FHistory fHist = new FHistory(HistoryDir))
+                fHist.ShowDialog();
         }
     }
 }

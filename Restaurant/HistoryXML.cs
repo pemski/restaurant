@@ -13,6 +13,7 @@ namespace Restaurant
     public class HistoryXML : IHistoryManagement
     {
         public string FilePath { get; }
+        private string FileDir { get => Path.GetDirectoryName(FilePath); }
 
 
         public HistoryXML(string filePath)
@@ -39,6 +40,9 @@ namespace Restaurant
 
         public void Save(HistoryData data, Order order)
         {
+            if (!Directory.Exists(FileDir))
+                Directory.CreateDirectory(FileDir);
+
             History.Order histOrder = CreateOrderElement(data, order);
 
             if (!File.Exists(FilePath))
