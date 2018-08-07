@@ -66,6 +66,15 @@ namespace Restaurant
             pAdditives.Controls.Add(additiveChooser);
             additiveChooser.Dock = DockStyle.Fill;
             additiveChooser.Visible = false;
+            SetToolTips();
+        }
+
+
+        private void SetToolTips()
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(bExpandAdditives, "Rozwiń/zwiń listę dodatków");
+            tp.SetToolTip(bAdd, "Dodaj do zamówienia");
         }
 
 
