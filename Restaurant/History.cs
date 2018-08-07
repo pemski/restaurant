@@ -36,6 +36,7 @@ namespace Restaurant
             public string Client { get; set; }
             public DateTime Date { get; set; }
             public List<Meal> Meals { get; set; }
+            public string Comment { get; set; }
 
             public Order()
             {
@@ -47,12 +48,14 @@ namespace Restaurant
                 StringBuilder text = new StringBuilder();
                 text.AppendLine(String.Format("Client: {0}.", Client));
                 text.AppendLine(String.Format("Date: {0}.", Date));
-                foreach(var meal in Meals)
+                foreach (var meal in Meals)
                 {
                     text.AppendLine(String.Format("\t(x{3}) {0} - {1} {2}", meal.Name, meal.Cost.PrintCost(), meal.Currency, meal.Quantity));
                     foreach (var add in meal.Additives)
                         text.AppendLine(String.Format("\t\t+ {0} - {1} {2}", add.Name, add.Cost.PrintCost(), add.Currency));
                 }
+                if (!String.IsNullOrWhiteSpace(Comment))
+                    text.Append(String.Format("Comment: {0}", Comment));
                 return text.ToString().Trim();
             }
         }

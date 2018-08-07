@@ -11,6 +11,7 @@ namespace Restaurant
     {
         private List<Meal> orderedMeals;
         public IEnumerable<Meal> OrderedMeals { get { foreach (var meal in orderedMeals) yield return meal; } }
+        public string Comment { get; set; }
 
 
         public Order()
@@ -57,6 +58,7 @@ namespace Restaurant
         public void ResetOrder()
         {
             orderedMeals.Clear();
+            Comment = "";
             NotifyOrderChange();
         }
 
@@ -70,6 +72,8 @@ namespace Restaurant
                 text.AppendFormat("(x{0}) ", quantity);
                 text.AppendLine(meal.ToString());
             }
+            if (!String.IsNullOrWhiteSpace(Comment))
+                text.Append(String.Format("Uwagi: {0}", Comment));
             return text.ToString().Trim();
         }
     }

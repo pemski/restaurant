@@ -77,6 +77,7 @@ namespace Restaurant
                     histMeal.Additives.Add(add);
                 histOrder.Meals.Add(histMeal);
             }
+            histOrder.Comment = order.Comment;
 
             return histOrder;
         }

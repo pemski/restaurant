@@ -84,6 +84,8 @@ namespace Test_Restaurant
                 order.Add(meal, 1);
             }
 
+            order.Comment = "comment1, please.";
+
             StringBuilder expected = new StringBuilder();
             expected.AppendLine("(x1) meal - 1.00 zł");
             expected.AppendLine("(x2) meal2 - 5.00 zł");
@@ -95,7 +97,8 @@ namespace Test_Restaurant
             expected.AppendLine("\t+ add42 - 0.00 eur");
             expected.AppendLine("(x2) meal5 - 25.05 zł");
             expected.AppendLine("\t+ add51 - 19.99 zł");
-            expected.Append("\t+ add52 - 0.00 eur");
+            expected.AppendLine("\t+ add52 - 0.00 eur");
+            expected.AppendFormat("Uwagi: {0}", "comment1, please.");
 
             Assert.AreEqual(expected.ToString(), order.ToString());
         }

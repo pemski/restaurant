@@ -37,6 +37,7 @@ namespace Restaurant
             PrintOrder();
         }
 
+
         private void PrintOrder()
         {
             lCart.Text = client.Order.ToString().Replace("\t", Tab);
@@ -53,6 +54,7 @@ namespace Restaurant
                 lSummary.Text = String.Format("Razem: {0} {1}", sumCost.PrintCost(), currency);
             }
         }
+
 
         private void FMain_Load(object sender, EventArgs e)
         {
@@ -86,7 +88,7 @@ namespace Restaurant
                 else
                     MessageBox.Show("Nic nie dodano do zamówienia!", "Puste zamówienie", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 MessageBox.Show(exc.Message, "Błąd składania zamówienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -95,6 +97,8 @@ namespace Restaurant
 
         private void FinalizeOrder()
         {
+            client.Order.Comment = eOrderComment.Text;
+
             using (FMail fmail = new FMail(client.Order))
             {
                 fmail.ShowDialog();
@@ -104,7 +108,7 @@ namespace Restaurant
                 {
                     IHistoryManagement historyMngt = new HistoryXML(HistoryPath);
                     historyMngt.Save(new HistoryData { Client = "main client", Date = DateTime.Now }, client.Order);
-                    client.Order.ResetOrder();
+                    ResetOrder();
                 }
             }
         }
@@ -119,7 +123,14 @@ namespace Restaurant
 
         private void bCancel_Click(object sender, EventArgs e)
         {
+            ResetOrder();
+        }
+
+
+        private void ResetOrder()
+        {
             client.Order.ResetOrder();
+            eOrderComment.Text = client.Order.Comment;
         }
     }
 }

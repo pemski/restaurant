@@ -30,25 +30,29 @@
         {
             this.pMain = new System.Windows.Forms.Panel();
             this.pSummary = new System.Windows.Forms.Panel();
+            this.pGroupSum = new System.Windows.Forms.Panel();
             this.pCancel = new System.Windows.Forms.Panel();
             this.bCancel = new System.Windows.Forms.Button();
-            this.bHistory = new System.Windows.Forms.Button();
             this.pOrder = new System.Windows.Forms.Panel();
             this.lSummary = new System.Windows.Forms.Label();
             this.bOrder = new System.Windows.Forms.Button();
             this.pCart = new System.Windows.Forms.FlowLayoutPanel();
             this.lCart = new System.Windows.Forms.Label();
+            this.pHistory = new System.Windows.Forms.Panel();
+            this.bHistory = new System.Windows.Forms.Button();
             this.lOrder = new System.Windows.Forms.Label();
             this.pMeals = new System.Windows.Forms.Panel();
-            this.pGroupSum = new System.Windows.Forms.Panel();
-            this.pHistory = new System.Windows.Forms.Panel();
+            this.pOrderComment = new System.Windows.Forms.Panel();
+            this.lOrderComment = new System.Windows.Forms.Label();
+            this.eOrderComment = new System.Windows.Forms.TextBox();
             this.pMain.SuspendLayout();
             this.pSummary.SuspendLayout();
+            this.pGroupSum.SuspendLayout();
             this.pCancel.SuspendLayout();
             this.pOrder.SuspendLayout();
             this.pCart.SuspendLayout();
-            this.pGroupSum.SuspendLayout();
             this.pHistory.SuspendLayout();
+            this.pOrderComment.SuspendLayout();
             this.SuspendLayout();
             // 
             // pMain
@@ -74,11 +78,24 @@
             this.pSummary.Size = new System.Drawing.Size(262, 473);
             this.pSummary.TabIndex = 1;
             // 
+            // pGroupSum
+            // 
+            this.pGroupSum.AutoScroll = true;
+            this.pGroupSum.Controls.Add(this.pCancel);
+            this.pGroupSum.Controls.Add(this.pOrder);
+            this.pGroupSum.Controls.Add(this.pOrderComment);
+            this.pGroupSum.Controls.Add(this.pCart);
+            this.pGroupSum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pGroupSum.Location = new System.Drawing.Point(0, 31);
+            this.pGroupSum.Name = "pGroupSum";
+            this.pGroupSum.Size = new System.Drawing.Size(262, 404);
+            this.pGroupSum.TabIndex = 5;
+            // 
             // pCancel
             // 
             this.pCancel.Controls.Add(this.bCancel);
             this.pCancel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pCancel.Location = new System.Drawing.Point(0, 49);
+            this.pCancel.Location = new System.Drawing.Point(0, 123);
             this.pCancel.Name = "pCancel";
             this.pCancel.Size = new System.Drawing.Size(262, 22);
             this.pCancel.TabIndex = 4;
@@ -95,23 +112,12 @@
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
-            // bHistory
-            // 
-            this.bHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bHistory.Location = new System.Drawing.Point(127, 3);
-            this.bHistory.Name = "bHistory";
-            this.bHistory.Size = new System.Drawing.Size(132, 32);
-            this.bHistory.TabIndex = 3;
-            this.bHistory.Text = "Historia zamówień";
-            this.bHistory.UseVisualStyleBackColor = true;
-            this.bHistory.Click += new System.EventHandler(this.bHistory_Click);
-            // 
             // pOrder
             // 
             this.pOrder.Controls.Add(this.lSummary);
             this.pOrder.Controls.Add(this.bOrder);
             this.pOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pOrder.Location = new System.Drawing.Point(0, 13);
+            this.pOrder.Location = new System.Drawing.Point(0, 87);
             this.pOrder.Name = "pOrder";
             this.pOrder.Size = new System.Drawing.Size(262, 36);
             this.pOrder.TabIndex = 0;
@@ -157,6 +163,26 @@
             this.lCart.Size = new System.Drawing.Size(0, 13);
             this.lCart.TabIndex = 3;
             // 
+            // pHistory
+            // 
+            this.pHistory.Controls.Add(this.bHistory);
+            this.pHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pHistory.Location = new System.Drawing.Point(0, 435);
+            this.pHistory.Name = "pHistory";
+            this.pHistory.Size = new System.Drawing.Size(262, 38);
+            this.pHistory.TabIndex = 6;
+            // 
+            // bHistory
+            // 
+            this.bHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bHistory.Location = new System.Drawing.Point(127, 3);
+            this.bHistory.Name = "bHistory";
+            this.bHistory.Size = new System.Drawing.Size(132, 32);
+            this.bHistory.TabIndex = 3;
+            this.bHistory.Text = "Historia zamówień";
+            this.bHistory.UseVisualStyleBackColor = true;
+            this.bHistory.Click += new System.EventHandler(this.bHistory_Click);
+            // 
             // lOrder
             // 
             this.lOrder.AutoSize = true;
@@ -178,26 +204,36 @@
             this.pMeals.Size = new System.Drawing.Size(427, 473);
             this.pMeals.TabIndex = 0;
             // 
-            // pGroupSum
+            // pOrderComment
             // 
-            this.pGroupSum.AutoScroll = true;
-            this.pGroupSum.Controls.Add(this.pCancel);
-            this.pGroupSum.Controls.Add(this.pOrder);
-            this.pGroupSum.Controls.Add(this.pCart);
-            this.pGroupSum.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pGroupSum.Location = new System.Drawing.Point(0, 31);
-            this.pGroupSum.Name = "pGroupSum";
-            this.pGroupSum.Size = new System.Drawing.Size(262, 404);
-            this.pGroupSum.TabIndex = 5;
+            this.pOrderComment.Controls.Add(this.eOrderComment);
+            this.pOrderComment.Controls.Add(this.lOrderComment);
+            this.pOrderComment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pOrderComment.Location = new System.Drawing.Point(0, 13);
+            this.pOrderComment.Name = "pOrderComment";
+            this.pOrderComment.Size = new System.Drawing.Size(262, 74);
+            this.pOrderComment.TabIndex = 5;
             // 
-            // pHistory
+            // lOrderComment
             // 
-            this.pHistory.Controls.Add(this.bHistory);
-            this.pHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pHistory.Location = new System.Drawing.Point(0, 435);
-            this.pHistory.Name = "pHistory";
-            this.pHistory.Size = new System.Drawing.Size(262, 38);
-            this.pHistory.TabIndex = 6;
+            this.lOrderComment.AutoSize = true;
+            this.lOrderComment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lOrderComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lOrderComment.Location = new System.Drawing.Point(0, 0);
+            this.lOrderComment.Name = "lOrderComment";
+            this.lOrderComment.Size = new System.Drawing.Size(49, 16);
+            this.lOrderComment.TabIndex = 0;
+            this.lOrderComment.Text = "Uwagi:";
+            // 
+            // eOrderComment
+            // 
+            this.eOrderComment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eOrderComment.Location = new System.Drawing.Point(0, 16);
+            this.eOrderComment.Multiline = true;
+            this.eOrderComment.Name = "eOrderComment";
+            this.eOrderComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.eOrderComment.Size = new System.Drawing.Size(262, 58);
+            this.eOrderComment.TabIndex = 1;
             // 
             // FMain
             // 
@@ -212,14 +248,16 @@
             this.pMain.ResumeLayout(false);
             this.pSummary.ResumeLayout(false);
             this.pSummary.PerformLayout();
+            this.pGroupSum.ResumeLayout(false);
+            this.pGroupSum.PerformLayout();
             this.pCancel.ResumeLayout(false);
             this.pOrder.ResumeLayout(false);
             this.pOrder.PerformLayout();
             this.pCart.ResumeLayout(false);
             this.pCart.PerformLayout();
-            this.pGroupSum.ResumeLayout(false);
-            this.pGroupSum.PerformLayout();
             this.pHistory.ResumeLayout(false);
+            this.pOrderComment.ResumeLayout(false);
+            this.pOrderComment.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -240,6 +278,9 @@
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.Panel pGroupSum;
         private System.Windows.Forms.Panel pHistory;
+        private System.Windows.Forms.Panel pOrderComment;
+        private System.Windows.Forms.TextBox eOrderComment;
+        private System.Windows.Forms.Label lOrderComment;
     }
 }
 
