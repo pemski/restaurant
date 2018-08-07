@@ -54,6 +54,13 @@ namespace Restaurant
         }
 
 
+        public void ResetOrder()
+        {
+            orderedMeals.Clear();
+            NotifyOrderChange();
+        }
+
+
         public override string ToString()
         {
             StringBuilder text = new StringBuilder();

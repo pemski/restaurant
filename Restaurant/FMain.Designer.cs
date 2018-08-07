@@ -96,6 +96,7 @@
             this.bOrder.TabIndex = 0;
             this.bOrder.Text = "Zamów";
             this.bOrder.UseVisualStyleBackColor = true;
+            this.bOrder.Click += new System.EventHandler(this.bOrder_Click);
             // 
             // pCart
             // 

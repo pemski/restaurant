@@ -89,7 +89,7 @@ namespace Restaurant
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message, "Placing order error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.Message, "Błąd dodania pozycji zamówienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

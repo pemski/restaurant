@@ -72,5 +72,32 @@ namespace Restaurant
                 }
             }
         }
+
+
+        private void bOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (client.Order.OrderedMeals.Count() > 0)
+                    FinalizeOrder();
+                else
+                    MessageBox.Show("Nic nie dodano do zamówienia!", "Puste zamówienie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd składania zamówienia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void FinalizeOrder()
+        {
+            using (FMail fmail = new FMail(client.Order))
+            {
+                fmail.ShowDialog();
+                if (fmail.DialogResult == DialogResult.OK)
+                    client.Order.ResetOrder();
+            }
+        }
     }
 }

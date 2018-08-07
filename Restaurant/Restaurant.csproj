@@ -52,6 +52,12 @@
       <DependentUpon>AdditiveChooser.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="FMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMail.Designer.cs">
+      <DependentUpon>FMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="History.cs" />
     <Compile Include="HistoryData.cs" />
     <Compile Include="HistoryXML.cs" />
@@ -65,6 +71,7 @@
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IHistoryManagement.cs" />
+    <Compile Include="MailUtil.cs" />
     <Compile Include="MainCourseAdditiveFactory.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Additive.cs" />
@@ -85,6 +92,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="AdditiveChooser.resx">
       <DependentUpon>AdditiveChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMail.resx">
+      <DependentUpon>FMail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
