@@ -45,6 +45,9 @@ namespace Restaurant
 
         private void dgFiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
             string fileName = dgFiles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             string filePath = Path.Combine(HistoryDir, fileName);
             LoadFileContent(filePath);

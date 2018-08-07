@@ -44,13 +44,16 @@
             // 
             this.dgFiles.AllowUserToAddRows = false;
             this.dgFiles.AllowUserToDeleteRows = false;
+            this.dgFiles.AllowUserToResizeRows = false;
             this.dgFiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgFiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.File});
             this.dgFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgFiles.Location = new System.Drawing.Point(0, 0);
+            this.dgFiles.MultiSelect = false;
             this.dgFiles.Name = "dgFiles";
             this.dgFiles.ReadOnly = true;
+            this.dgFiles.RowHeadersVisible = false;
             this.dgFiles.Size = new System.Drawing.Size(321, 450);
             this.dgFiles.TabIndex = 0;
             this.dgFiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFiles_CellClick);
