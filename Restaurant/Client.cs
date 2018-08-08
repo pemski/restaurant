@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    /// <summary>
-    /// Client only holding Order could be removed and just Order could be used, however it stays
-    /// in case any personal data (name, address) appears in the future.
-    /// </summary>
     public class Client
     {
+        public string Name { get; }
         public Order Order { get; }
 
 
-        public Client()
+        public Client(string name)
         {
+            this.Name = name;
             Order = new Order();
         }
     }

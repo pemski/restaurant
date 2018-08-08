@@ -26,7 +26,7 @@ namespace Restaurant
             InitializeComponent();
 
             menu = new Menu();
-            client = new Client();
+            client = new Client("main client");
 
             client.Order.PropertyChanged += UpdateOrder;
         }
@@ -107,7 +107,7 @@ namespace Restaurant
                 if (true || fmail.DialogResult == DialogResult.OK)
                 {
                     IHistoryManagement historyMngt = new HistoryXML(HistoryPath);
-                    historyMngt.Save(new HistoryData { Client = "main client", Date = DateTime.Now }, client.Order);
+                    historyMngt.Save(new HistoryData { Client = client.Name, Date = DateTime.Now }, client.Order);
                     ResetOrder();
                 }
             }
