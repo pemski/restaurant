@@ -68,8 +68,7 @@ namespace Restaurant
 
                 /*wysyłając z gmail'a, należy w ustawieniach konta zezwolić na logowanie
                   z mniej bezpiecznych aplikacji*/
-                mailUtil.SendMail(eSender.Text, ePassword.Text, eReceiver.Text, eSmtp.Text,
-                    (int)ePort.Value, rbSSLOn.Checked, OrderToSend);
+                mailUtil.SendMail(info, OrderToSend);
 
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("Wysłano zamówienie.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

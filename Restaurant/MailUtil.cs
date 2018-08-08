@@ -12,16 +12,15 @@ namespace Restaurant
 {
     public class MailUtil
     {
-        public void SendMail(string sender, string password, string receiver, string smtp, int port,
-            bool ssl, Order order)
+        public void SendMail(MailInfo mailInfo, Order order)
         {
-            if (String.IsNullOrWhiteSpace(sender))
+            if (String.IsNullOrWhiteSpace(mailInfo.Sender))
                 throw new ArgumentNullException("sender", "MailUtil.SendMail: sender cannot be empty or null.");
 
-            if (String.IsNullOrWhiteSpace(receiver))
+            if (String.IsNullOrWhiteSpace(mailInfo.Receiver))
                 throw new ArgumentNullException("receiver", "MailUtil.SendMail: receiver cannot be empty or null.");
 
-            if (String.IsNullOrWhiteSpace(smtp))
+            if (String.IsNullOrWhiteSpace(mailInfo.Smtp))
                 throw new ArgumentNullException("smtp", "MailUtil.SendMail: smtp cannot be empty or null.");
 
             if (order == null)
@@ -29,13 +28,13 @@ namespace Restaurant
 
             try
             {
-                SmtpClient client = new SmtpClient(smtp, port);
-                client.EnableSsl = ssl;
+                SmtpClient client = new SmtpClient(mailInfo.Smtp, mailInfo.Port);
+                client.EnableSsl = mailInfo.SSL;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(sender, password);
+                client.Credentials = new NetworkCredential(mailInfo.Sender, mailInfo.Password);
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 
-                using (MailMessage mail = new MailMessage(sender, receiver))
+                using (MailMessage mail = new MailMessage(mailInfo.Sender, mailInfo.Receiver))
                 {
                     mail.Subject = "Restaurant order";
                     mail.Body = order.ToString();
