@@ -141,19 +141,9 @@
             0,
             0,
             0});
-            this.ePort.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.ePort.Name = "ePort";
             this.ePort.Size = new System.Drawing.Size(67, 20);
             this.ePort.TabIndex = 4;
-            this.ePort.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // lSmtp
             // 
@@ -232,6 +222,7 @@
             this.Name = "FMail";
             this.ShowIcon = false;
             this.Text = "Wysyłka zamówienia";
+            this.Load += new System.EventHandler(this.FMail_Load);
             this.pMain.ResumeLayout(false);
             this.pMain.PerformLayout();
             this.gbSSL.ResumeLayout(false);

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Restaurant
 {
@@ -14,6 +16,7 @@ namespace Restaurant
     {
         private MailUtil mailUtil;
         public Order OrderToSend { get; }
+        private string mailConfigPath;
 
 
         public FMail(Order order)
@@ -22,8 +25,29 @@ namespace Restaurant
                 throw new ArgumentNullException("order", "FMail");
 
             InitializeComponent();
+            this.mailConfigPath = Path.Combine(Application.StartupPath, "mail-config.xml");
             this.mailUtil = new MailUtil();
             this.OrderToSend = order;
+        }
+
+
+        private void FMail_Load(object sender, EventArgs e)
+        {
+            LoadMailConfig();
+        }
+
+
+        private void LoadMailConfig()
+        {
+            MailInfo info = mailUtil.DeserializeMailInfo(mailConfigPath);
+            eSender.Text = info.Sender;
+            eReceiver.Text = info.Receiver;
+            eSmtp.Text = info.Smtp;
+            ePort.Value = info.Port;
+            if (info.SSL)
+                rbSSLOn.Checked = true;
+            else
+                rbSSLOff.Checked = true;
         }
 
 
@@ -31,6 +55,17 @@ namespace Restaurant
         {
             try
             {
+                MailInfo info = new MailInfo
+                {
+                    Sender = eSender.Text,
+                    Password = ePassword.Text,
+                    Receiver = eReceiver.Text,
+                    Smtp = eSmtp.Text,
+                    Port = (int)ePort.Value,
+                    SSL = rbSSLOn.Checked
+                };
+                mailUtil.SerializeMailInfo(info, mailConfigPath);
+
                 /*wysyłając z gmail'a, należy w ustawieniach konta zezwolić na logowanie
                   z mniej bezpiecznych aplikacji*/
                 mailUtil.SendMail(eSender.Text, ePassword.Text, eReceiver.Text, eSmtp.Text,

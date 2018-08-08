@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Restaurant
 {
@@ -46,5 +48,40 @@ namespace Restaurant
                 throw new Exception(String.Format("MailUtil.SendMail: {0}", exc.Message), exc);
             }
         }
+
+
+        public void SerializeMailInfo(MailInfo info, string mailInfoPath)
+        {
+            using (var stream = new FileStream(mailInfoPath, FileMode.Create))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(MailInfo));
+                serializer.Serialize(stream, info);
+            }
+        }
+
+
+        public MailInfo DeserializeMailInfo(string mailInfoPath)
+        {
+            if (!File.Exists(mailInfoPath))
+                return new MailInfo();
+
+            using (var stream = new FileStream(mailInfoPath, FileMode.Open))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(MailInfo));
+                return (MailInfo)serializer.Deserialize(stream);
+            }
+        }
+    }
+
+
+    public class MailInfo
+    {
+        public string Sender { get; set; }
+        [XmlIgnore]
+        public string Password { get; set; }
+        public string Receiver { get; set; }
+        public string Smtp { get; set; }
+        public int Port { get; set; }
+        public bool SSL { get; set; }
     }
 }
